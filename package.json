@@ -1,0 +1,21 @@
+{
+  "name": "stylesavvy-backend",
+  "version": "1.0.0",
+  "description": "Stylesavvy Backend",
+  "main": "src/main.ts",
+  "author": "Shayan Ameen",
+  "license": "MIT",
+  "packageManager": "pnpm@9.11.0",
+  "scripts": {
+    "dev": "tsx --env-file=.env --watch src/main.ts",
+    "start": "tsx --env-file=.env src/main.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.4",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "zod": "^3.23.8"
+  }
+}
