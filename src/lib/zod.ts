@@ -1,17 +1,22 @@
-import * as zod from "zod"
+import * as zod from 'zod';
 
 export function formatZodErrors(error: zod.ZodError) {
-  return error.errors.concat().map(item => `${item.path[0]}: ${item.message}`)
+  return error.errors
+    .concat()
+    .map((item) => `${item.path[0]}: ${item.message}`);
 }
 
 export function handleZodErrors(error: zod.ZodError, label?: string) {
   if (error instanceof zod.ZodError) {
-    console.error(label ? `${label} Errors:` : "Errors:", formatZodErrors(error))
+    console.error(
+      label ? `${label} Errors:` : 'Errors:',
+      formatZodErrors(error),
+    );
 
-    process.exit(0)
+    process.exit(0);
   }
 
-  console.error(JSON.stringify(error))
+  console.error(JSON.stringify(error));
 
-  process.exit(1)
+  process.exit(1);
 }
