@@ -13,10 +13,12 @@ const envSchema = zod.object({
   PORT: zod.coerce.number().min(1000).max(999999),
 });
 
+type EnvType = zod.infer<typeof envSchema>;
+
 const validatedEnv = envSchema.safeParse(process.env);
 
 if (validatedEnv.error) {
   handleZodErrors(validatedEnv.error, 'Env');
 }
 
-export const env = validatedEnv.data;
+export const env = validatedEnv.data as EnvType;
