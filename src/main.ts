@@ -5,8 +5,35 @@ import { default as http } from 'node:http';
 
 const app = express();
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.post('/login', (req, res) => {
+  const { email, password, deviceOS, deviceToken } = req.body;
+
+  console.log({
+    email,
+    password,
+    deviceOS,
+    deviceToken,
+  });
+
+  res.json({
+    data: {
+      name: 'John Doe',
+      email,
+    },
+    tokens: {
+      access: {
+        token: 'access-token',
+        expiry: new Date(),
+      },
+      refresh: {
+        token: 'refresh-token',
+        expiry: new Date(),
+      },
+    },
+  });
 });
 
 const server = http.createServer(app);
