@@ -20,19 +20,23 @@ app.post('/login', (req, res) => {
 
   res.json({
     data: {
-      name: 'John Doe',
-      email,
-    },
-    tokens: {
-      access: {
-        token: 'access-token',
-        expiry: new Date(),
+      user: {
+        name: 'John Doe',
+        email,
       },
-      refresh: {
-        token: 'refresh-token',
-        expiry: new Date(),
+      tokens: {
+        access: {
+          token: 'access-token',
+          expiry: new Date(),
+        },
+        refresh: {
+          token: 'refresh-token',
+          expiry: new Date(),
+        },
       },
     },
+    status: 'success',
+    message: 'Login successful',
   });
 });
 
